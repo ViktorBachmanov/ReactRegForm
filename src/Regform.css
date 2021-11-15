@@ -6,7 +6,7 @@ form {
     margin: 1rem;
 }
 
-input[type='text'] {
+input[type='text'], select {
     display: block;
 }
 

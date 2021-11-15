@@ -1,3 +1,7 @@
 .error {
     box-shadow: 2px 2px 2px 2px red;
 }
+
+option:hover {
+    box-shadow: 0 0 10px 100px #EBF4F8 inset;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import InputElName from './InputElName.js';
 import InputElEmail from './InputElEmail.js';
+import InputElTel from './InputElTel.js';
+import InputElLang from './InputElLang.js';
 import InputElCheck from './InputElCheck.js';
 import './Regform.css';
 
@@ -11,7 +13,7 @@ class Regform extends React.Component {
         super();
         
         this.state = {
-            isValid: [false, false, false, false]            
+            isValid: [false, false, false, false, false]            
         };
 
         this.modifyFieldsValid = this.modifyFieldsValid.bind(this);
@@ -19,7 +21,11 @@ class Regform extends React.Component {
     }
 
     get isValid() {
-        return this.state.isValid[0] && this.state.isValid[1] && this.state.isValid[2];
+        return this.state.isValid[0] && 
+                this.state.isValid[1] && 
+                this.state.isValid[2] &&
+                this.state.isValid[3] &&
+                this.state.isValid[4];
     }
 
     modifyFieldsValid(index) {
@@ -43,7 +49,11 @@ class Regform extends React.Component {
                 
                 <InputElName label='Имя' callback={this.modifyFieldsValid(0)}/>
                 <InputElEmail label='Email' callback={this.modifyFieldsValid(1)}/>
-                <InputElCheck callback={this.modifyFieldsValid(2)}/>
+                <InputElTel label='Номер телефона' callback={this.modifyFieldsValid(2)}/>
+                <InputElLang label='Язык' callback={this.modifyFieldsValid(3)}/>
+                
+
+                <InputElCheck callback={this.modifyFieldsValid(4)}/>
 
                  <input type='submit' value='Зарегистрироваться'
                     disabled={this.isValid ? false : true}
