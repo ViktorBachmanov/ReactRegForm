@@ -1,0 +1,16 @@
+form {
+    padding: 1rem;
+}
+
+.field {
+    margin: 1rem;
+}
+
+input[type='text'] {
+    display: block;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 75%;
+}
