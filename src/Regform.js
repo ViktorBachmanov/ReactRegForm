@@ -52,6 +52,10 @@ class Regform extends React.Component {
                 <InputElTel label='Номер телефона' callback={this.modifyFieldsValid(2)}/>
                 <InputElLang label='Язык' callback={this.modifyFieldsValid(3)}/>
                 
+                <div id={'lang_list'} className={'dropList'}>
+                    <span>Русский</span>
+                    <span>Английский</span>
+                </div>
 
                 <InputElCheck callback={this.modifyFieldsValid(4)}/>
 

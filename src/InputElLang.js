@@ -9,6 +9,7 @@ class InputElLang extends React.Component {
         this._isSelected = false;
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     
@@ -16,16 +17,18 @@ class InputElLang extends React.Component {
         this.props.callback(true);
     }
 
+    handleClick() {
+        console.log('handleClick');
+        let langList = document.getElementById('lang_list');
+        langList.style.display = 'block';
+    }
+
     render() {
         
         return (
             <div className={'field'}>
                 <label>{this.props.label}
-                <select value={''} onChange={this.handleChange}>
-                    <option value={''} disabled hidden>{this.props.label}</option>
-                    <option value={'ru'}>Русский</option>
-                    <option value={'en'}>Английский</option>
-                </select>
+                     <input type={'text'} onFocus={this.handleClick} />
                 </label>
             </div>
         );
