@@ -95,8 +95,8 @@ class Regform extends React.Component {
         return (
             <div style={{width: '460px',  margin: '1rem'}}>
             <form onSubmit={() => { console.log("submit") }}>
-                <div className='header'>Регистрация</div>
-                <div className='login'>
+                <div id='header'>Регистрация</div>
+                <div id='login'>
                     Уже есть аккаунт?&nbsp;&nbsp;
                     <a href='##'>Войти</a>
                 </div>

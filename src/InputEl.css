@@ -13,6 +13,8 @@ input {
     line-height: 21px;
     font-family: 'IBM Plex Sans';
     color: #2C2738;
+    margin-top: 7px;
+    margin-bottom: 8px;
 }
 
 input:focus {

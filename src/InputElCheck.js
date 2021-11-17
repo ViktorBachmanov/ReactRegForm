@@ -49,13 +49,17 @@ class InputElCheck extends React.Component {
 
    
     render() {
-        
+        let checkMark = this.isChecked ? 'visible' : 'hidden';
+        let classNames = this.isChecked ? 'checked' : '';
+
         return (
-            <div className={'field'}>
-            <label>
-                <input type={'checkbox'} onChange={this.handleChange}/>
-                {'Принимаю условия использования'}
-            </label>
+            <div id='agree_field'>
+                <div id='check_box' onClick={this.handleChange} className={classNames}>
+                    <img id='check_mark' src='/pics/check-mark.svg' style={{visibility: checkMark}}/>
+                </div>
+                
+                <div style={{marginLeft: '8px'}}>Принимаю <a href='##'>условия</a> использования</div>
+
             </div>
         );
     }

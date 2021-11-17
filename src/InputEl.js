@@ -25,8 +25,8 @@ class InputEl extends React.Component {
     }
 
     set isValid(val) {
-        if(this.isValid === val)
-            return;
+        /*if(this.isValid === val)
+            return;*/
 
         //this.state.isValid = val;
 
