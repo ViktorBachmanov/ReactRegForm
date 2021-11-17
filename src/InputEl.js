@@ -61,8 +61,9 @@ class InputEl extends React.Component {
             <div className={'field'}>
             <label>
                 {this.props.label}
-                <input type={'text'} onChange={this.handleChange} 
-                                     onBlur={this.handleBlur}/>
+                <input type={'text'} placeholder={this.props.placeholder}
+                        onChange={this.handleChange} 
+                        onBlur={this.handleBlur}/>
                 <span className='errorMessage' style={{visibility: errorMessageVisibility}}>
                     Введено некорректное значение
                 </span>
