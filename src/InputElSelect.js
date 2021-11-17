@@ -7,19 +7,31 @@ class InputElSelect extends React.Component {
     constructor(props) {
         super(props);
 
-        this._isSelected = false;
+        //this._isSelected = false;
+        this.state = {
+            isSelected: false
+        }
 
         this.selectEl = React.createRef();
         this.list = React.createRef();
 
+        //this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
     }
 
+    get isValid() {
+        return this.state.isSelected;
+    }
     /*
     handleChange() {
-        this.props.callback(true);
+        console.log('Select handleChange');
+        this.setState({
+            isSelected: true
+        });
+
+        this.props.updateSubmit();
     }*/
 
     handleFocus() {
@@ -37,6 +49,12 @@ class InputElSelect extends React.Component {
     handleSelect(e) {
         this.list.current.style.display = 'none';
         this.selectEl.current.value = e.target.textContent;
+
+        this.setState({
+            isSelected: true
+        });
+
+        this.props.updateSubmit();
     }
 
     render() {        
@@ -48,7 +66,8 @@ class InputElSelect extends React.Component {
                     <input ref={this.selectEl} type={'text'} readOnly style={{cursor: 'default'}}
                             placeholder={this.props.placeholder}
                             onFocus={this.handleFocus}
-                            onBlur={this.handleBlur}/>
+                            onBlur={this.handleBlur}
+                            onChange={this.handleChange}/>
                 </label>
 
                 <img src='/pics/dropdown.svg' style={{position: 'absolute', right: '11px', top: '30px'}} />

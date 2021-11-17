@@ -1,5 +1,6 @@
 form {
     width: 100%;
+    min-width: 360px;
     height: 789px;
     padding: 30px;
     background-color: white;
