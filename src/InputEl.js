@@ -28,7 +28,7 @@ class InputEl extends React.Component {
         if(this.isValid === val)
             return;
 
-        this.state.isValid = val;
+        //this.state.isValid = val;
 
         this.setState({
             isValid: val
@@ -37,7 +37,7 @@ class InputEl extends React.Component {
         console.log(`val: ${val}`);
         console.log(`state.isValid: ${this.isValid}`);
 
-        this.props.updateFormState();
+        this.props.updateSubmit();
     }
 
     validateIllegal(val) {
