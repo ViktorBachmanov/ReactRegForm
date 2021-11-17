@@ -28,9 +28,14 @@ class InputEl extends React.Component {
         if(this.isValid === val)
             return;
 
+        this.state.isValid = val;
+
         this.setState({
             isValid: val
         });
+
+        console.log(`val: ${val}`);
+        console.log(`state.isValid: ${this.isValid}`);
 
         this.props.updateFormState();
     }
@@ -67,7 +72,8 @@ class InputEl extends React.Component {
     }
 
     handleBlur(e) {
-        this.validateLegal(e.target.value);
+        //console.log(`handleBlur: ${e.target.value}`);
+        //this.validateLegal(e.target.value);
     }
 
     render() {
