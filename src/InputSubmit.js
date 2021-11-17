@@ -5,22 +5,25 @@ import './InputEl.css';
 class InputSubmit extends React.Component {
     constructor(props) {
         super(props);
-        
+        /*
         this.state = {
             count: 0
-        };
+        };*/
+        this.state = {};
              
 
         this.updateState = this.updateState.bind(this);
     }
 
     updateState() {
+        /*
         this.setState(prevState => {
                 return {
                     count: ++prevState.count
                 }
             }
-        );
+        );*/
+        this.setState({});
     }
 
     

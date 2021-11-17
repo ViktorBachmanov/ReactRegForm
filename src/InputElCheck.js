@@ -21,8 +21,10 @@ class InputElCheck extends React.Component {
         this.setState({
             isChecked: val
         });
-    }
 
+        this.props.updateSubmit();
+    }
+    
     get isValid() {
         return this.isChecked;
     }

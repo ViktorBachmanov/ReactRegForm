@@ -65,12 +65,14 @@ class Regform extends React.Component {
         console.log(this.nameComp.current.isValid);
         console.log(this.emailComp.current.isValid);
         console.log(this.telComp.current.isValid);
+        console.log(this.selectComp.current.isValid);
+        console.log(this.checkComp.current.isValid);
 
         return this.nameComp.current.isValid && 
                 this.emailComp.current.isValid && 
-                this.telComp.current.isValid;// &&
-                /*this.selectComp.current.isValid() &&
-                this.checkComp.current.isValid();*/
+                this.telComp.current.isValid &&
+                this.selectComp.current.isValid &&
+                this.checkComp.current.isValid;
     }
     /*
     modifyFieldsValid(index) {
@@ -102,9 +104,9 @@ class Regform extends React.Component {
                 <InputElName ref={this.nameComp} label='Имя' placeholder='Введите Ваше имя' updateSubmit={this.updateSubmit}/>
                 <InputElEmail ref={this.emailComp} label='Email' placeholder='Введите Ваш email' updateSubmit={this.updateSubmit}/>
                 <InputElTel ref={this.telComp} label='Номер телефона' placeholder='Введите номер телефона' updateSubmit={this.updateSubmit}/>
-                <InputElSelect ref={this.selectComp} label='Язык' placeholder='Язык' />
+                <InputElSelect ref={this.selectComp} label='Язык' placeholder='Язык' updateSubmit={this.updateSubmit}/>
 
-                <InputElCheck ref={this.checkComp}/>
+                <InputElCheck ref={this.checkComp}  updateSubmit={this.updateSubmit}/>
 
                 <InputSubmit ref={this.submitComp} isValid={this.isValid}/>
                 

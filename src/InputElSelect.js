@@ -15,7 +15,7 @@ class InputElSelect extends React.Component {
         this.selectEl = React.createRef();
         this.list = React.createRef();
 
-        this.handleChange = this.handleChange.bind(this);
+        //this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
@@ -24,13 +24,15 @@ class InputElSelect extends React.Component {
     get isValid() {
         return this.state.isSelected;
     }
-
+    /*
     handleChange() {
-        //this.props.callback(true);
+        console.log('Select handleChange');
         this.setState({
             isSelected: true
         });
-    }
+
+        this.props.updateSubmit();
+    }*/
 
     handleFocus() {
         /*let langList = document.getElementById('lang_list');
@@ -47,6 +49,12 @@ class InputElSelect extends React.Component {
     handleSelect(e) {
         this.list.current.style.display = 'none';
         this.selectEl.current.value = e.target.textContent;
+
+        this.setState({
+            isSelected: true
+        });
+
+        this.props.updateSubmit();
     }
 
     render() {        
