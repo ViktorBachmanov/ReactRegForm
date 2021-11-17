@@ -11,23 +11,60 @@ class Regform extends React.Component {
 
     constructor() {
         super();
-        
+        /*
         this.state = {
             isValid: [false, false, false, false, false]            
+        };*/
+
+        this.state = {
+            count: 0
         };
 
-        this.modifyFieldsValid = this.modifyFieldsValid.bind(this);
+        this.nameComp = React.createRef();
+        this.emailComp = React.createRef();
+        this.telComp = React.createRef();
+        this.selectComp = React.createRef();
+        this.checkComp = React.createRef();
+
+
+        //this.modifyFieldsValid = this.modifyFieldsValid.bind(this);
+        this.updateState = this.updateState.bind(this);
 
     }
 
+    updateState() {
+        this.setState(prevState => {
+                return {
+                    count: ++prevState.count
+                }
+            }
+        );
+    }
+    /*
     get isValid() {
         return this.state.isValid[0] && 
                 this.state.isValid[1] && 
                 this.state.isValid[2] &&
                 this.state.isValid[3] &&
                 this.state.isValid[4];
-    }
+    }*/
+    get isValid() {
+        console.log(`isFormValid:`);
 
+        if(!this.nameComp.current)
+            return false;
+
+        console.log(this.nameComp.current.isValid);
+        console.log(this.emailComp.current.isValid);
+        console.log(this.telComp.current.isValid);
+
+        return this.nameComp.current.isValid && 
+                this.emailComp.current.isValid && 
+                this.telComp.current.isValid;// &&
+                /*this.selectComp.current.isValid() &&
+                this.checkComp.current.isValid();*/
+    }
+    /*
     modifyFieldsValid(index) {
         return (val) => {
             this.setState(prevState => {
@@ -40,11 +77,11 @@ class Regform extends React.Component {
                 };
             });
         }
-    }
+    }*/
 
 
     render() {
-        
+        console.log('render Regform');
         return (
             <div style={{width: '460px',  margin: '1rem'}}>
             <form onSubmit={() => { console.log("submit") }}>
@@ -54,12 +91,12 @@ class Regform extends React.Component {
                     <a href='##'>Войти</a>
                 </div>
                 
-                <InputElName label='Имя' placeholder='Введите Ваше имя' callback={this.modifyFieldsValid(0)}/>
-                <InputElEmail label='Email' placeholder='Введите Ваш email' callback={this.modifyFieldsValid(1)}/>
-                <InputElTel label='Номер телефона' placeholder='Введите номер телефона' callback={this.modifyFieldsValid(2)}/>
-                <InputElSelect label='Язык' placeholder='Язык' callback={this.modifyFieldsValid(3)}/>
+                <InputElName ref={this.nameComp} label='Имя' placeholder='Введите Ваше имя' updateFormState={this.updateState}/>
+                <InputElEmail ref={this.emailComp} label='Email' placeholder='Введите Ваш email' updateFormState={this.updateState}/>
+                <InputElTel ref={this.telComp} label='Номер телефона' placeholder='Введите номер телефона' updateFormState={this.updateState}/>
+                <InputElSelect ref={this.selectComp} label='Язык' placeholder='Язык' />
 
-                <InputElCheck callback={this.modifyFieldsValid(4)}/>
+                <InputElCheck ref={this.checkComp}/>
 
                 <input type='submit' value='Зарегистрироваться'
                 disabled={this.isValid ? false : true}

@@ -23,3 +23,13 @@ input:focus {
 input::placeholder {
     color: #7C9CBF;
 }
+
+input[type='submit'] {
+    background: #0880AE;
+    color: #EBF4F8;
+}
+
+input[type='submit']:disabled {
+    background: #DBE2EA;
+    color: #2C2738;
+}

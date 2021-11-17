@@ -5,21 +5,45 @@ class InputElCheck extends React.Component {
     constructor(props) {
         super(props);
         
-        this._isChecked = false;
+        //this._isChecked = false;
+        this.state = {
+            isChecked: false
+        };
 
         this.handleChange = this.handleChange.bind(this);
     }
 
+    get isChecked() {
+        return this.state.isChecked;
+    }
+
+    set isChecked(val) {
+        this.setState({
+            isChecked: val
+        });
+    }
+
+    get isValid() {
+        return this.isChecked;
+    }
+    /*
     handleChange(e) {
         if(e.target.checked) {
-            this._isChecked = true;
+            this.isChecked = true;
         } else {
-            this._isChecked = false;
+            this.isChecked = false;
         }
 
-        this.props.callback(this._isChecked);
-        //console.log('change');
+        //this.props.callback(this._isChecked);
+    }*/
+    handleChange() {
+        if(this.isChecked) {
+            this.isChecked = false;
+        } else {
+            this.isChecked = true;
+        }
     }
+    
 
    
     render() {

@@ -7,7 +7,11 @@ class InputEl extends React.Component {
         super(props);
         
         this._isEmpty = true;
-        this._isValid = false;
+        //this.isValid = false;
+
+        this.state = {
+            isValid: false            
+        };
 
         this._regPatternIllegal = null;
         this._regPatternLegal = null;        
@@ -16,36 +20,50 @@ class InputEl extends React.Component {
         this.handleBlur = this.handleBlur.bind(this);
     }
 
+    get isValid() {
+        return this.state.isValid;
+    }
+
+    set isValid(val) {
+        if(this.isValid === val)
+            return;
+
+        this.setState({
+            isValid: val
+        });
+
+        this.props.updateFormState();
+    }
+
     validateIllegal(val) {
         if(val.match(this._regPatternIllegal)) {
-            this._isValid = false;
+            this.isValid = false;
         } else {
-            this._isValid = true;
+            this.isValid = true;
         }
     }
 
     validateLegal(val) {
         if(this._regPatternLegal.test(val)) {
-            this._isValid = true;
+            this.isValid = true;
         } else {
-            this._isValid = false;
+            this.isValid = false;
         }
 
-        this.props.callback(this._isValid);
+        //this.props.callback(this.isValid);
     }
 
     
     handleChange(e) {
         if(e.target.value === '') {
             this._isEmpty = true;
-            this._isValid = false;
+            this.isValid = false;
         } else {
             this._isEmpty = false;
             this.validateIllegal(e.target.value);
         }
 
-        this.props.callback(this._isValid);
-        //console.log('change');
+        //this.props.callback(this.isValid);
     }
 
     handleBlur(e) {
@@ -53,8 +71,9 @@ class InputEl extends React.Component {
     }
 
     render() {
+        console.log('render InputEl');
         let errorMessageVisibility = 'hidden';
-        if(!this._isEmpty && !this._isValid) {
+        if(!this._isEmpty && !this.isValid) {
             errorMessageVisibility = 'visible';
         }
         return (
