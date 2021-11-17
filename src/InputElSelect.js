@@ -9,32 +9,51 @@ class InputElSelect extends React.Component {
 
         this._isSelected = false;
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
+        this.selectEl = React.createRef();
+        this.list = React.createRef();
+
+        this.handleFocus = this.handleFocus.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
 
-    
+    /*
     handleChange() {
         this.props.callback(true);
+    }*/
+
+    handleFocus() {
+        /*let langList = document.getElementById('lang_list');
+        langList.style.display = 'block';*/
+        this.list.current.style.display = 'block';
     }
 
-    handleClick() {
-        console.log('handleClick');
-        let langList = document.getElementById('lang_list');
-        langList.style.display = 'block';
+    handleBlur() {
+        setTimeout(() => { 
+            this.list.current.style.display = 'none';
+        }, 250);        
+    }
+
+    handleSelect(e) {
+        this.list.current.style.display = 'none';
+        this.selectEl.current.value = e.target.textContent;
     }
 
     render() {        
         return (
             <div className={'field'} style={{position: 'relative'}}>
-                <label>{this.props.label}
-                    <div tabIndex='0' onFocus={this.handleClick} className='selectDiv'>
-                        <div id='select_value' className='placeholder'>Язык</div>
-                        <img src='/pics/dropdown.svg' style={{float: 'right', margin: '11px'}} />
-                    </div>
+                                
+                <label>
+                    {this.props.label}
+                    <input ref={this.selectEl} type={'text'} readOnly style={{cursor: 'default'}}
+                            placeholder={this.props.placeholder}
+                            onFocus={this.handleFocus}
+                            onBlur={this.handleBlur}/>
                 </label>
 
-                <ul id={'lang_list'} className={'dropList'}>
+                <img src='/pics/dropdown.svg' style={{position: 'absolute', right: '11px', top: '30px'}} />
+
+                <ul ref={this.list} className={'dropList'} onClick={this.handleSelect}>
                     <li>Русский</li>
                     <li>Английский</li>
                     <li>Китайский</li>

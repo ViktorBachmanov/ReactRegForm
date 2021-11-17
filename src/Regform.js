@@ -54,10 +54,10 @@ class Regform extends React.Component {
                     <a href='##'>Войти</a>
                 </div>
                 
-                <InputElName label='Имя' callback={this.modifyFieldsValid(0)}/>
-                <InputElEmail label='Email' callback={this.modifyFieldsValid(1)}/>
-                <InputElTel label='Номер телефона' callback={this.modifyFieldsValid(2)}/>
-                <InputElSelect label='Язык' callback={this.modifyFieldsValid(3)}/>
+                <InputElName label='Имя' placeholder='Введите Ваше имя' callback={this.modifyFieldsValid(0)}/>
+                <InputElEmail label='Email' placeholder='Введите Ваш email' callback={this.modifyFieldsValid(1)}/>
+                <InputElTel label='Номер телефона' placeholder='Введите номер телефона' callback={this.modifyFieldsValid(2)}/>
+                <InputElSelect label='Язык' placeholder='Язык' callback={this.modifyFieldsValid(3)}/>
 
                 <InputElCheck callback={this.modifyFieldsValid(4)}/>
 
