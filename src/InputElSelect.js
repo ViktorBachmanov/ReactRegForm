@@ -5,16 +5,13 @@ class InputElSelect extends React.Component {
     constructor(props) {
         super(props);
 
-        //this._isSelected = false;
         this.state = {
             isSelected: false,
             isOpen: false
         }
 
         this.selectEl = React.createRef();
-        //this.list = React.createRef();
 
-        //this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
@@ -23,20 +20,9 @@ class InputElSelect extends React.Component {
     get isValid() {
         return this.state.isSelected;
     }
-    /*
-    handleChange() {
-        console.log('Select handleChange');
-        this.setState({
-            isSelected: true
-        });
-
-        this.props.updateSubmit();
-    }*/
-
+    
     handleFocus() {
-        console.log('handleFocus');
-        //this.list.current.style.display = 'block';
-         
+        
         this.setState({
             isOpen: true
         });
@@ -44,21 +30,12 @@ class InputElSelect extends React.Component {
     }
 
     handleBlur() {
-        console.log('blur');
-        /*setTimeout(() => { 
-            this.list.current.style.display = 'none';
-        }, 250);     */ 
-
-       // setTimeout(() => { 
-            this.setState({
-                isOpen: false
-            }); 
-        //}, 300);
+        this.setState({
+            isOpen: false
+        }); 
     }
 
     handleSelect(e) {
-        console.log('mouseDown');
-        //this.list.current.style.display = 'none';
         this.selectEl.current.value = e.target.textContent;
         this.setState({
             isSelected: true,
@@ -98,7 +75,6 @@ class InputElSelect extends React.Component {
     }
 
 }
-
 
 
 export default InputElSelect;
