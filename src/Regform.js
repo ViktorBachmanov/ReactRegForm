@@ -93,7 +93,7 @@ class Regform extends React.Component {
     render() {
         console.log('render Regform');
         return (
-            <div style={{width: '460px',  margin: '1rem'}}>
+            <div style={{width: '100%'}}>
             <form onSubmit={() => { console.log("submit") }}>
                 <div id='header'>Регистрация</div>
                 <div id='login'>

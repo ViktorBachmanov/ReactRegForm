@@ -12,9 +12,10 @@ class InputEl extends React.Component {
         this.state = {
             isValid: false            
         };
-
+        /*
         this._regPatternIllegal = null;
-        this._regPatternLegal = null;        
+        this._regPatternLegal = null;   */
+        this._regexPattern = null;     
 
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
@@ -39,7 +40,7 @@ class InputEl extends React.Component {
 
         this.props.updateSubmit();
     }
-
+    /*
     validateIllegal(val) {
         if(val.match(this._regPatternIllegal)) {
             this.isValid = false;
@@ -47,7 +48,7 @@ class InputEl extends React.Component {
             this.isValid = true;
         }
     }
-
+    
     validateLegal(val) {
         if(this._regPatternLegal.test(val)) {
             this.isValid = true;
@@ -56,16 +57,25 @@ class InputEl extends React.Component {
         }
 
         //this.props.callback(this.isValid);
+    }*/
+
+    validate(str) {
+        //this._isEmpty = str === '' ? true : false;
+        
+        if(this._regexPattern.test(str)) {
+            this.isValid = true;
+        } else {
+            this.isValid = false;
+        }
     }
 
-    
     handleChange(e) {
         if(e.target.value === '') {
             this._isEmpty = true;
             this.isValid = false;
         } else {
             this._isEmpty = false;
-            this.validateIllegal(e.target.value);
+            this.validate(e.target.value);
         }
 
         //this.props.callback(this.isValid);
@@ -74,6 +84,7 @@ class InputEl extends React.Component {
     handleBlur(e) {
         //console.log(`handleBlur: ${e.target.value}`);
         //this.validateLegal(e.target.value);
+        this.validate(e.target.value);
     }
 
     render() {

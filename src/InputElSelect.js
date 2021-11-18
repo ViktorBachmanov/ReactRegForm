@@ -70,9 +70,9 @@ class InputElSelect extends React.Component {
                             onChange={this.handleChange}/>
                 </label>
 
-                <img src='/pics/dropdown.svg' style={{position: 'absolute', right: '11px', top: '40px'}} />
+                <img src='/pics/dropdown.svg' style={{position: 'absolute', right: '11px', top: '40px'}} alt='v'/>
 
-                <ul ref={this.list} className={'dropList'} onClick={this.handleSelect}>
+                <ul ref={this.list} id='drop_list' onClick={this.handleSelect}>
                     <li>Русский</li>
                     <li>Английский</li>
                     <li>Китайский</li>

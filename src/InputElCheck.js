@@ -55,7 +55,7 @@ class InputElCheck extends React.Component {
         return (
             <div id='agree_field'>
                 <div id='check_box' onClick={this.handleChange} className={classNames}>
-                    <img id='check_mark' src='/pics/check-mark.svg' style={{visibility: checkMark}}/>
+                    <img id='check_mark' src='/pics/check-mark.svg' style={{visibility: checkMark}} alt='v'/>
                 </div>
                 
                 <div style={{marginLeft: '8px'}}>Принимаю <a href='##'>условия</a> использования</div>
