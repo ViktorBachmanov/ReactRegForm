@@ -10,7 +10,8 @@ class InputEl extends React.Component {
         //this.isValid = false;
 
         this.state = {
-            isValid: false            
+            isValid: false,
+            isFocus: false           
         };
         /*
         this._regPatternIllegal = null;
@@ -19,6 +20,7 @@ class InputEl extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
     }
 
     get isValid() {
@@ -39,6 +41,10 @@ class InputEl extends React.Component {
         console.log(`state.isValid: ${this.isValid}`);
 
         this.props.updateSubmit();
+    }
+
+    get isFocus() {
+        return this.state.isFocus;
     }
     /*
     validateIllegal(val) {
@@ -81,16 +87,25 @@ class InputEl extends React.Component {
         //this.props.callback(this.isValid);
     }
 
+    handleFocus() {
+        this.setState({
+            isFocus: true
+        });
+    }
+
     handleBlur(e) {
         //console.log(`handleBlur: ${e.target.value}`);
         //this.validateLegal(e.target.value);
+        this.setState({
+            isFocus: false
+        });
         this.validate(e.target.value);
     }
 
     render() {
         console.log('render InputEl');
         let errorMessageVisibility = 'hidden';
-        if(!this._isEmpty && !this.isValid) {
+        if(!this._isEmpty && !this.isValid && !this.isFocus) {
             errorMessageVisibility = 'visible';
         }
         return (
@@ -98,7 +113,8 @@ class InputEl extends React.Component {
             <label>
                 {this.props.label}
                 <input type={'text'} placeholder={this.props.placeholder}
-                        onChange={this.handleChange} 
+                        onChange={this.handleChange}
+                        onFocus={this.handleFocus} 
                         onBlur={this.handleBlur}/>
                 <span className='errorMessage' style={{visibility: errorMessageVisibility}}>
                     Введено некорректное значение
