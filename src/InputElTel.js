@@ -1,5 +1,4 @@
 import InputEl from './InputEl.js';
-import './InputEl.css';
 
 
 class InputElTel extends InputEl {

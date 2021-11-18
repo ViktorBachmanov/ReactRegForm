@@ -1,5 +1,4 @@
 import React from 'react';
-import './InputEl.css';
 
 
 class InputEl extends React.Component {
