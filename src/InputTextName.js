@@ -1,7 +1,7 @@
-import InputEl from './InputEl.js';
+import InputText from './InputText.js';
 
 
-class InputElName extends InputEl {
+class InputTextName extends InputText {
     constructor(props) {
         super(props);
       
@@ -12,4 +12,4 @@ class InputElName extends InputEl {
    
 }
 
-export default InputElName;
+export default InputTextName;

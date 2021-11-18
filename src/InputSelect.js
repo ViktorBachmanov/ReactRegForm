@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class InputElSelect extends React.Component {
+class InputSelect extends React.Component {
     constructor(props) {
         super(props);
 
@@ -77,4 +77,4 @@ class InputElSelect extends React.Component {
 }
 
 
-export default InputElSelect;
+export default InputSelect;

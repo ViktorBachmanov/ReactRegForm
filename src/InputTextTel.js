@@ -1,7 +1,7 @@
-import InputEl from './InputEl.js';
+import InputText from './InputText.js';
 
 
-class InputElTel extends InputEl {
+class InputTextTel extends InputText {
        
     validate(str) {
         let rslt1 = /^\+?[()-\d]*/.test(str);
@@ -20,4 +20,4 @@ class InputElTel extends InputEl {
    
 }
 
-export default InputElTel;
+export default InputTextTel;

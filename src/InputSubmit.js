@@ -14,9 +14,6 @@ class InputSubmit extends React.Component {
         this.setState({});
     }
 
-    
-
-
     render() {
              
         return (
@@ -24,9 +21,7 @@ class InputSubmit extends React.Component {
                 <input type='submit' value='Зарегистрироваться'
                     disabled={this.props.isValid() ? false : true}
                 />
-            </div>
-
-            
+            </div>            
         );
     }
 
