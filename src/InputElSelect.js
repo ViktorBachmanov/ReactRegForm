@@ -9,11 +9,12 @@ class InputElSelect extends React.Component {
 
         //this._isSelected = false;
         this.state = {
-            isSelected: false
+            isSelected: false,
+            isOpen: false
         }
 
         this.selectEl = React.createRef();
-        this.list = React.createRef();
+        //this.list = React.createRef();
 
         //this.handleChange = this.handleChange.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
@@ -35,29 +36,44 @@ class InputElSelect extends React.Component {
     }*/
 
     handleFocus() {
-        /*let langList = document.getElementById('lang_list');
-        langList.style.display = 'block';*/
-        this.list.current.style.display = 'block';
+        console.log('handleFocus');
+        //this.list.current.style.display = 'block';
+         
+        this.setState({
+            isOpen: true
+        });
+        
     }
 
     handleBlur() {
-        setTimeout(() => { 
+        console.log('blur');
+        /*setTimeout(() => { 
             this.list.current.style.display = 'none';
-        }, 250);        
+        }, 250);     */ 
+
+       // setTimeout(() => { 
+            this.setState({
+                isOpen: false
+            }); 
+        //}, 300);
     }
 
     handleSelect(e) {
-        this.list.current.style.display = 'none';
+        console.log('mouseDown');
+        //this.list.current.style.display = 'none';
         this.selectEl.current.value = e.target.textContent;
-
         this.setState({
-            isSelected: true
+            isSelected: true,
+            isOpen: false
         });
+        
 
         this.props.updateSubmit();
     }
 
-    render() {        
+    render() {
+        let displayVal = this.state.isOpen ? 'block' : 'none';
+
         return (
             <div className={'field'} style={{position: 'relative'}}>
                                 
@@ -72,7 +88,8 @@ class InputElSelect extends React.Component {
 
                 <img src='/pics/dropdown.svg' style={{position: 'absolute', right: '11px', top: '40px'}} alt='v'/>
 
-                <ul ref={this.list} id='drop_list' onClick={this.handleSelect}>
+                <ul id='drop_list' onMouseDown={this.handleSelect}
+                    style={{display: displayVal}}>
                     <li>Русский</li>
                     <li>Английский</li>
                     <li>Китайский</li>
