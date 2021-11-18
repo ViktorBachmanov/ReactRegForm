@@ -12,8 +12,6 @@ class InputText extends React.Component {
             isFocus: false           
         };
        
-        this._regexPattern = null;     
-
         this.handleChange = this.handleChange.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
@@ -36,9 +34,8 @@ class InputText extends React.Component {
         return this.state.isFocus;
     }
    
-    validate(str) {
-        
-        if(this._regexPattern.test(str)) {
+    validate(str) {        
+        if(this.props.regexPattern.test(str)) {
             this.isValid = true;
         } else {
             this.isValid = false;

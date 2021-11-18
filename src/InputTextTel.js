@@ -4,7 +4,7 @@ import InputText from './InputText.js';
 class InputTextTel extends InputText {
        
     validate(str) {
-        let rslt1 = /^\+?[()-\d]*/.test(str);
+        let rslt1 = this.props.regexPattern.test(str);
         let digitsArr = str.match(/\d/g);
         let totalDigits;
         if(digitsArr)

@@ -1,6 +1,5 @@
 import React from 'react';
-import InputTextName from './InputTextName.js';
-import InputTextEmail from './InputTextEmail.js';
+import InputText from './InputText.js';
 import InputTextTel from './InputTextTel.js';
 import InputSelect from './InputSelect.js';
 import InputCheck from './InputCheck.js';
@@ -51,9 +50,19 @@ class Regform extends React.Component {
                     <a href='##' style={{marginLeft: '6px'}}>Войти</a>
                 </div>
                 
-                <InputTextName ref={this.nameComp} label='Имя' placeholder='Введите Ваше имя' updateSubmit={this.updateSubmit}/>
-                <InputTextEmail ref={this.emailComp} label='Email' placeholder='Введите Ваш email' updateSubmit={this.updateSubmit}/>
-                <InputTextTel ref={this.telComp} label='Номер телефона' placeholder='Введите номер телефона' updateSubmit={this.updateSubmit}/>
+                <InputText ref={this.nameComp} label='Имя' 
+                                placeholder='Введите Ваше имя' updateSubmit={this.updateSubmit}
+                                regexPattern={/^[-\sA-ZА-ЯЁ]+$/i}
+                />
+                <InputText ref={this.emailComp} label='Email' 
+                                placeholder='Введите Ваш email' updateSubmit={this.updateSubmit}
+                                regexPattern={/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([-a-z0-9]+\.)+[a-z]{2,}))$/i}
+                />
+                <InputTextTel ref={this.telComp} label='Номер телефона' 
+                                placeholder='Введите номер телефона' updateSubmit={this.updateSubmit}
+                                regexPattern={/^\+?[()-\d]*$/}
+                />
+
                 <InputSelect ref={this.selectComp} label='Язык' placeholder='Язык' updateSubmit={this.updateSubmit}/>
 
                 <InputCheck ref={this.checkComp}  updateSubmit={this.updateSubmit}/>
