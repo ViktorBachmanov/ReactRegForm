@@ -6,11 +6,9 @@ class InputSelect extends React.Component {
         super(props);
 
         this.state = {
-            isSelected: false,
+            value: '',
             isOpen: false
         }
-
-        this.selectEl = React.createRef();
 
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
@@ -18,11 +16,10 @@ class InputSelect extends React.Component {
     }
 
     get isValid() {
-        return this.state.isSelected;
+        return this.state.value;
     }
     
-    handleFocus() {
-        
+    handleFocus() {        
         this.setState({
             isOpen: true
         });
@@ -36,9 +33,8 @@ class InputSelect extends React.Component {
     }
 
     handleSelect(e) {
-        this.selectEl.current.value = e.target.textContent;
         this.setState({
-            isSelected: true,
+            value: e.target.textContent,
             isOpen: false
         });
         
@@ -54,7 +50,8 @@ class InputSelect extends React.Component {
                                 
                 <label>
                     {this.props.label}
-                    <input ref={this.selectEl} type={'text'} readOnly style={{cursor: 'default'}}
+                    <input type={'text'} readOnly style={{cursor: 'default'}}
+                            value={this.state.value}
                             placeholder={this.props.placeholder}
                             onFocus={this.handleFocus}
                             onBlur={this.handleBlur}
