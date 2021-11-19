@@ -32,6 +32,7 @@ a {
 .field {
     margin-top: 8px;
     margin-bottom: 8px;
+    box-sizing: border-box;
 }
 
 
@@ -79,8 +80,8 @@ input {
     line-height: 21px;
     font-family: 'IBM Plex Sans';
     color: #2C2738;
-    margin-top: 7px;
-    margin-bottom: 8px;
+    margin-top: 6px;
+    margin-bottom: 7px;
 }
 
 input:focus {
@@ -90,16 +91,6 @@ input:focus {
 
 input::placeholder {
     color: #7C9CBF;
-}
-
-input[type='submit'] {
-    background: #0880AE;
-    color: #EBF4F8;
-}
-
-input[type='submit']:disabled {
-    background: #DBE2EA;
-    color: #2C2738;
 }
 
 #select_value {
@@ -137,4 +128,19 @@ li:hover {
     border-radius: 6px;
     box-sizing: border-box;
     padding: 12px 0;
+}
+
+input[type='submit'] {
+    background: #0880AE;
+    color: #EBF4F8;
+    height: 56px;
+}
+
+input[type='submit']:disabled {
+    background: #DBE2EA;
+    color: #2C2738;
+}
+
+label {
+    font-size: 16px;
 }
