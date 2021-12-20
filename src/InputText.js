@@ -1,14 +1,13 @@
 import React from 'react';
 
 
-class InputText extends React.Component {
+class InputText extends React.PureComponent {
     constructor(props) {
         super(props);
         
         this._isEmpty = true;
-
+        
         this.state = {
-            isValid: false,
             isFocus: false           
         };
        
@@ -18,16 +17,11 @@ class InputText extends React.Component {
     }
 
     get isValid() {
-        return this.state.isValid;
+        return this.props.isValid;
     }
 
-    set isValid(val) {
-        
-        this.setState({
-            isValid: val
-        });
-
-        this.props.updateSubmit();
+    set isValid(val) {        
+        this.props.setValid(val);
     }
 
     get isFocus() {

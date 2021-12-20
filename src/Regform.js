@@ -1,4 +1,5 @@
 import React from 'react';
+import { elNames } from './config.js';
 import InputText from './InputText.js';
 import InputTextTel from './InputTextTel.js';
 import InputSelect from './InputSelect.js';
@@ -7,37 +8,41 @@ import InputSubmit from './InputSubmit.js';
 import './Regform.css';
 
 
+
+
+
 class Regform extends React.Component {
 
     constructor() {
         super();
-       
-        this.nameComp = React.createRef();
-        this.emailComp = React.createRef();
-        this.telComp = React.createRef();
-        this.selectComp = React.createRef();
-        this.checkComp = React.createRef();
-        this.submitComp = React.createRef();
 
-        this.updateSubmit = this.updateSubmit.bind(this);
-        this.isValid = this.isValid.bind(this);
-
-    }
-
-    updateSubmit() {
-        this.submitComp.current.updateState();
+        this.state = {
+            isValid: {
+                [elNames.userName]: false,
+                [elNames.email]: false,
+                [elNames.tel]: false,
+                [elNames.lang]: false,
+                [elNames.agree]: false,
+            }
+        };
     }
    
-    isValid() {
+    get isValid() {
+        return this.state.isValid[elNames.userName] &&
+                this.state.isValid[elNames.email] &&
+                this.state.isValid[elNames.tel] &&
+                this.state.isValid[elNames.lang] &&
+                this.state.isValid[elNames.agree];
+    }
 
-        if(!this.nameComp.current)
-            return false;
-
-        return this.nameComp.current.isValid && 
-                this.emailComp.current.isValid && 
-                this.telComp.current.isValid &&
-                this.selectComp.current.isValid &&
-                this.checkComp.current.isValid;
+    setValid(elName) {
+        return (val) => {
+            this.setState((prevState) => {
+                return {
+                    isValid: { ...prevState.isValid, [elName]: val }
+                };
+            });
+        }
     }
     
     render() {
@@ -50,24 +55,41 @@ class Regform extends React.Component {
                     <a href='##' style={{marginLeft: '6px'}}>Войти</a>
                 </div>
                 
-                <InputText ref={this.nameComp} label='Имя' 
-                                placeholder='Введите Ваше имя' updateSubmit={this.updateSubmit}
-                                regexPattern={/^[-\sA-ZА-ЯЁ]+$/i}
+                <InputText
+                    label='Имя' 
+                    placeholder='Введите Ваше имя' 
+                    isValid={this.state.isValid[elNames.userName]}
+                    setValid={this.setValid(elNames.userName)}
+                    regexPattern={/^[-\sA-ZА-ЯЁ]+$/i}
                 />
-                <InputText ref={this.emailComp} label='Email' 
-                                placeholder='Введите Ваш email' updateSubmit={this.updateSubmit}
-                                regexPattern={/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([-a-z0-9]+\.)+[a-z]{2,}))$/i}
+                <InputText 
+                    label='Email' 
+                    placeholder='Введите Ваш email' 
+                    isValid={this.state.isValid[elNames.email]}
+                    setValid={this.setValid(elNames.email)}
+                    regexPattern={/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([-a-z0-9]+\.)+[a-z]{2,}))$/i}
                 />
-                <InputTextTel ref={this.telComp} label='Номер телефона' 
-                                placeholder='Введите номер телефона' updateSubmit={this.updateSubmit}
-                                regexPattern={/^\+?[()-\d]*$/}
+                <InputTextTel 
+                    label='Номер телефона' 
+                    placeholder='Введите номер телефона' 
+                    isValid={this.state.isValid[elNames.tel]}
+                    setValid={this.setValid(elNames.tel)}
+                    regexPattern={/^\+?[()-\d]*$/}
                 />
 
-                <InputSelect ref={this.selectComp} label='Язык' placeholder='Язык' updateSubmit={this.updateSubmit}/>
+                <InputSelect 
+                    label='Язык'
+                    placeholder='Язык'
+                    isValid={this.state.isValid[elNames.lang]}
+                    setValid={this.setValid(elNames.lang)}
+                />
 
-                <InputCheck ref={this.checkComp}  updateSubmit={this.updateSubmit}/>
+                <InputCheck 
+                    isChecked={this.state.isValid[elNames.agree]}
+                    setValid={this.setValid(elNames.agree)}
+                />
 
-                <InputSubmit ref={this.submitComp} isValid={this.isValid}/>
+                <InputSubmit isValid={this.isValid}/>
                 
             </form>
             </div>

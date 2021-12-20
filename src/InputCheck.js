@@ -4,24 +4,17 @@ import React from 'react';
 class InputCheck extends React.Component {
     constructor(props) {
         super(props);
-        
-        this.state = {
-            isChecked: false
-        };
+       
 
         this.handleChange = this.handleChange.bind(this);
     }
 
     get isChecked() {
-        return this.state.isChecked;
+        return this.props.isChecked;
     }
 
     set isChecked(val) {
-        this.setState({
-            isChecked: val
-        });
-
-        this.props.updateSubmit();
+        this.props.setValid(val);
     }
     
     get isValid() {
@@ -29,11 +22,7 @@ class InputCheck extends React.Component {
     }
     
     handleChange() {
-        if(this.isChecked) {
-            this.isChecked = false;
-        } else {
-            this.isChecked = true;
-        }
+       this.isChecked = !this.props.isChecked;
     }
     
 

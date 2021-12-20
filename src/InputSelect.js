@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class InputSelect extends React.Component {
+class InputSelect extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -16,7 +16,7 @@ class InputSelect extends React.Component {
     }
 
     get isValid() {
-        return this.state.value;
+        return this.props.isValid;
     }
     
     handleFocus() {        
@@ -39,7 +39,7 @@ class InputSelect extends React.Component {
         });
         
 
-        this.props.updateSubmit();
+        this.props.setValid(true);
     }
 
     render() {
