@@ -1,13 +1,6 @@
-import './App.css';
-import Regform from './Regform.js';
+import "./App.css";
+import Regform from "./Regform.js";
 
-
-function App() {
-  return (
-    <Regform>
-      
-    </Regform>
-  );
+export default function App() {
+  return <Regform />;
 }
-
-export default App;
