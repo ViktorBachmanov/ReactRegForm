@@ -46,6 +46,9 @@ class Regform extends React.Component {
     return (
       <div style={{ width: "100%" }}>
         <form>
+          <a id="github" href="https://github.com/ViktorBachmanov/ReactRegForm">
+            Код на GitHub
+          </a>
           <div id="header">Регистрация</div>
           <div id="login">
             Уже есть аккаунт?
